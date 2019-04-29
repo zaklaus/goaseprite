@@ -326,12 +326,7 @@ func readFile(filePath string) string {
 
 }
 
-// Load parses and returns an File for a supplied JSON exported from Aseprite. This is your starting point.
-// goaseprite is set up to read JSONs for sprite sheets exported with the Hash type.
-func Load(aseJSONFilePath string) *File {
-
-	file := readFile(aseJSONFilePath)
-
+func Load(file string) *File {
 	ase := &File{}
 	ase.Animations = make([]Animation, 0)
 	ase.PlaySpeed = 1
@@ -414,4 +409,13 @@ func Load(aseJSONFilePath string) *File {
 	}
 
 	return ase
+}
+
+// LoadData parses and returns an File for a supplied JSON exported from Aseprite. This is your starting point.
+// goaseprite is set up to read JSONs for sprite sheets exported with the Hash type.
+func LoadData(aseJSONFilePath string) *File {
+
+	file := readFile(aseJSONFilePath)
+
+	return Load(file)
 }
